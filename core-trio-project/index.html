@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Trio Web Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Semantic Header Section -->
+  <header>
+    <h1>My First Web Page</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main content area -->
+  <main>
+    <article>
+      <h2>Welcome to the Web</h2>
+      <p>This is a simple paragraph in an article to demonstrate HTML structure and styling.</p>
+    </article>
+
+    <aside>
+      <p>This is an aside section for related information.</p>
+    </aside>
+
+    <!-- Dynamic Greeting -->
+    <section id="greeting">
+      <h3 id="timeGreeting"></h3>
+    </section>
+
+    <!-- Button with Counter -->
+    <section>
+      <button onclick="incrementCounter()">Click Me</button>
+      <p>Button clicked <span id="clickCount">0</span> times.</p>
+    </section>
+
+    <!-- Simple Form -->
+    <section>
+      <form onsubmit="return validateForm()">
+        <label for="nameInput">Enter your name:</label>
+        <input type="text" id="nameInput" placeholder="Your name">
+        <button type="submit">Submit</button>
+      </form>
+      <p id="formFeedback"></p>
+    </section>
+  </main>
+
+  <script>
+    // Log to the console on page load
+    console.log("Page loaded successfully!");
+
+    // Dynamic Greeting
+    function updateGreeting() {
+      const hours = new Date().getHours();
+      const greeting = hours < 12 ? "Good Morning!" :
+                       hours < 18 ? "Good Afternoon!" : "Good Evening!";
+      document.getElementById("timeGreeting").textContent = greeting;
+    }
+    updateGreeting();
+
+    // Button Click Counter
+    let clickCount = 0;
+    function incrementCounter() {
+      clickCount++;
+      document.getElementById("clickCount").textContent = clickCount;
+    }
+
+    // Form Validation
+    function validateForm() {
+      const nameInput = document.getElementById("nameInput").value.trim();
+      const feedback = document.getElementById("formFeedback");
+      if (nameInput === "") {
+        feedback.textContent = "Please enter your name.";
+        feedback.style.color = "red";
+        return false;
+      }
+      feedback.textContent = `Hello, ${nameInput}!`;
+      feedback.style.color = "green";
+      return false; // Prevent form submission for demo purposes
+    }
+  </script>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>© 2025 My Website</p>
+  </footer>
+
+</body>
+</html>
